@@ -32,21 +32,21 @@ class GetGamesUseCaseTest {
 
         val result = getGamesUseCase().toList()
 
-        // Test the Loading state potentially with no data
+        // Test the loading state  with no data
         assertTrue(result[0] is Resource.Loading && result[0].data == null)
-        // Test the Success state with data
+        // Test the success state with data
         assertTrue(result[1] is Resource.Success && result[1].data == gamesList)
     }
 
     @Test
     fun `invoke emits error on exception`() = runTest {
-        val errorMessage = "An unexpected error occured"
+        val errorMessage = "An unexpected error occurred"
         `when`(gameRepository.getGames()).thenThrow(RuntimeException(errorMessage))
 
         val result = try {
             getGamesUseCase().toList()
         } catch (e: Exception) {
-            // This is just to continue the flow after an exception for testing; not typical use
+            // This is just to continue the flow after an exception for testing
             listOf(Resource.Loading<List<GamesItem>>(null), Resource.Error(errorMessage, null))
         }
 

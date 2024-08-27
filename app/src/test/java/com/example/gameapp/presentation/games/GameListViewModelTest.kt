@@ -56,18 +56,18 @@ class GameListViewModelTest{
         viewModel.getGames()
         assertEquals(true, viewModel.state.value.isLoading)
         viewModel.state.value.games?.let { assertTrue(it.isEmpty()) }
-        assertTrue(viewModel.state.value.error.isEmpty())
+        assertTrue(viewModel.state.value.errorMessage.isEmpty())
     }
 
     @Test
-    fun `getGames success and updates games`() = runTest {
+    fun `getGames success games`() = runTest {
         val games = listOf(GamesItem(id = 1, title = "Test Game",))
         `when`(getGamesUseCase()).thenReturn(flowOf(Resource.Success(games)))
 
         viewModel.getGames()
         assertEquals(games, viewModel.state.value.games)
         assertEquals(false, viewModel.state.value.isLoading)
-        assertEquals("", viewModel.state.value.error)
+        assertEquals("", viewModel.state.value.errorMessage)
     }
 
 
@@ -77,7 +77,7 @@ class GameListViewModelTest{
         `when`(getGamesUseCase()).thenReturn(flowOf(Resource.Error(errorMessage)))
 
         viewModel.getGames()
-        assertEquals(errorMessage, viewModel.state.value.error)
+        assertEquals(errorMessage, viewModel.state.value.errorMessage)
         viewModel.state.value.games?.let { assertTrue(it.isEmpty()) }
         assertEquals(false, viewModel.state.value.isLoading)
     }

@@ -4,8 +4,6 @@ import com.example.apptask.data.remote.ApiService
 import com.example.gameapp.data.remote.dto.GamesItem
 import com.example.gameapp.data.repository.GamesRepositoryImpl
 import junit.framework.TestCase.assertEquals
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test

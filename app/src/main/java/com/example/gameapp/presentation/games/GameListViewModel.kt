@@ -25,7 +25,7 @@ class GameListViewModel @Inject constructor(
     fun onEvent(events: GameListEvents) {
         when (events) {
             is GameListEvents.ResetError -> {
-                _state.value = state.value.copy(isShowError = false, errorMessage = null)
+                _state.value = state.value.copy(isShowError = false, errorMessage = "")
             }
         }
     }
@@ -40,7 +40,7 @@ class GameListViewModel @Inject constructor(
 
                     is Resource.Error<*> -> {
                         _state.value = GameListState(
-                            errorMessage = result.message ?: "An unexpected error occured"
+                            errorMessage = result.message ?: "An unexpected error occurred"
                         )
                     }
 

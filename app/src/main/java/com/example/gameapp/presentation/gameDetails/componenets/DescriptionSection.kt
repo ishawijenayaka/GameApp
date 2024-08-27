@@ -1,9 +1,5 @@
 package com.example.gameapp.presentation.gameDetails.componenets
 
-import android.content.Intent
-import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -17,6 +13,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -24,10 +22,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.gameapp.R
 import com.example.gameapp.core.commanComponents.GeneralText
+import com.example.gameapp.core.commanComponents.MainTitle
 import com.example.gameapp.core.commanComponents.SectionTitle
 import com.example.gameapp.core.commanComponents.SubText
 import com.example.gameapp.data.remote.dto.GamesItem
@@ -39,9 +39,6 @@ fun DescriptionSection(gamesItem: GamesItem, viewModel: GameDetailViewModel) {
 
     val loaded = remember { mutableStateOf(false) }
     val context = LocalContext.current
-    val openUrlLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
-    ){}
 
     LaunchedEffect(key1 = "") {
         loaded.value = true
@@ -68,6 +65,7 @@ fun DescriptionSection(gamesItem: GamesItem, viewModel: GameDetailViewModel) {
 
         Column(
             modifier = Modifier
+                .verticalScroll(rememberScrollState())
                 .padding(15.dp)
                 .background(Color.Transparent),
             verticalArrangement = Arrangement.Top,
@@ -75,11 +73,11 @@ fun DescriptionSection(gamesItem: GamesItem, viewModel: GameDetailViewModel) {
         )
         {
 
-//            MainTitle(
-//                modifier = Modifier,
-//                title = gamesItem.title,
-//                align = TextAlign.Center
-//            )
+            MainTitle(
+                modifier = Modifier,
+                title = gamesItem.title,
+                align = TextAlign.Center
+            )
 
             GeneralText(
                 modifier = Modifier
@@ -136,21 +134,50 @@ fun DescriptionSection(gamesItem: GamesItem, viewModel: GameDetailViewModel) {
 
             GeneralText(
                 modifier = Modifier
-                    .padding(top = 5.dp, bottom = 5.dp)
+                    .padding(top = 5.dp)
                     .clickable {
-                        viewModel.onEvent(GameDetailEvent.OpenUrl(gamesItem.gameUrl,context))
+                        viewModel.onEvent(GameDetailEvent.OpenUrl(gamesItem.gameUrl, context))
                     },
-                title = context.getString(R.string.game_url,gamesItem.gameUrl),
+                title = stringResource(R.string.game_url),
                 align = TextAlign.Start,
                 maxLines = 10
             )
 
             GeneralText(
                 modifier = Modifier
-                    .padding(top = 5.dp, bottom = 5.dp),
-                title = context.getString(R.string.free_game_profile_url, gamesItem.gameProfileUrl),
+                    .padding(bottom = 5.dp)
+                    .clickable {
+                        viewModel.onEvent(GameDetailEvent.OpenUrl(gamesItem.gameUrl, context))
+                    },
+                title = gamesItem.gameUrl ,
+                align = TextAlign.Start,
+                textColor = Color.Blue,
+                maxLines = 5
+            )
+
+            GeneralText(
+                modifier = Modifier
+                    .padding(top = 5.dp),
+                title = stringResource(R.string.free_game_profile_url),
                 align = TextAlign.Start,
                 maxLines = 10
+            )
+
+            GeneralText(
+                modifier = Modifier
+                    .padding(bottom = 5.dp)
+                    .clickable {
+                        viewModel.onEvent(
+                            GameDetailEvent.OpenUrl(
+                                gamesItem.gameProfileUrl,
+                                context
+                            )
+                        )
+                    },
+                title = gamesItem.gameProfileUrl ,
+                align = TextAlign.Start,
+                textColor = Color.Blue,
+                maxLines = 5
             )
 
             Spacer(modifier = Modifier.height(50.dp))

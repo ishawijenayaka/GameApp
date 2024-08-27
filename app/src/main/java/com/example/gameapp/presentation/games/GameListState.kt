@@ -5,6 +5,6 @@ import com.example.gameapp.data.remote.dto.GamesItem
 data class GameListState(
     val isLoading: Boolean = false,
     val games: List<GamesItem> ? = emptyList(),
-    val errorMessage: String? = null,
+    val errorMessage: String = "",
     val isShowError: Boolean = false,
 )

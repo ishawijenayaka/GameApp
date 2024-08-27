@@ -21,9 +21,6 @@
           <timeTargetWasSelectedWithDropDown value="2024-08-27T15:44:22.355522Z" />
         </State>
       </entry>
-      <entry key="gameItem_clickNavigatesToDetails()">
-        <State />
-      </entry>
       <entry key="performClick_OnRandomFactButton_navigatesToDetailScreen()">
         <State />
       </entry>

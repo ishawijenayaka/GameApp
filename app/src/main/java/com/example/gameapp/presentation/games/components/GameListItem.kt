@@ -48,7 +48,7 @@ fun GameListItem(
 
     Row(
         modifier = modifier
-            .fillMaxWidth() // Box should fill the maximum width available.
+            .fillMaxWidth()
             .height(200.dp)
             .clickable {
                 onClick(game)
@@ -72,10 +72,10 @@ fun GameListItem(
                 )
             } else {
                 Image(
-                    painter = painterResource(id = com.example.gameapp.R.drawable.default_image),
+                    painter = painterResource(id = R.drawable.default_image),
                     contentDescription = game.title,
                     modifier = Modifier
-                        .fillMaxWidth() // Box should fill the maximum width available.
+                        .fillMaxWidth()
                         .height(200.dp),
                     alignment = Alignment.Center
                 )

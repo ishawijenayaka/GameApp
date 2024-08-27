@@ -7,8 +7,7 @@
     <string name="nav_game_details">Game Details</string>
 
     <!--    game-->
-    <string name="empty_game_list">No games available</string>
-
+    <string name="empty_game_list">No games available, please check your connection</string>
 
     <!--    game details-->
     <string name="published_by">Published by: %1$s</string>
@@ -17,7 +16,7 @@
     <string name="works_for">Works for :  %1$s</string>
     <string name="genre">Genre : %1$s</string>
     <string name="released_date">Released date : %1$s</string>
-    <string name="game_url">Game Url: %1$s</string>
-    <string name="free_game_profile_url">Free to game profile url : %1$s</string>
+    <string name="game_url">Game Url</string>
+    <string name="free_game_profile_url">Free to game profile url : </string>
 
 </resources>

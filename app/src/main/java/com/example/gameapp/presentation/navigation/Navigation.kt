@@ -20,71 +20,7 @@ fun Navigation(){
     val navController = rememberNavController()
 
     Scaffold(
-        bottomBar = {
-//            NavigationBar(
-//                modifier = Modifier
-//                    .clip(RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp)),
-//                containerColor = MaterialTheme.colorScheme.surface
-//
-//            )
-//            {
-//                val navBackStackEntry by navController.currentBackStackEntryAsState()
-//                val currentDestination = navBackStackEntry?.destination
-//
-//                items.forEachIndexed { _, screen ->
-//                    val selected = currentDestination?.hierarchy?.any { it.route == screen.route }
-//
-//                    NavigationBarItem(
-//                        modifier = Modifier
-//                            .padding()
-//                            .weight(1f),
-//                        icon = {
-//                            if (selected == true) {
-//                                MyIcon(
-//                                    screen = screen ,
-//                                    iconColor = MaterialTheme.colorScheme.primary
-//                                )
-//
-//                            } else {
-//                               MyIcon(
-//                                   screen = screen ,
-//                                   iconColor = MaterialTheme.colorScheme.secondary
-//                               )
-//                            }
-//                        },
-//                        label = {
-//                            if (selected == true) {
-//                                GeneralText(
-//                                    title = stringResource(screen.resourceId),
-//                                    align = TextAlign.Center,
-//                                    textColor = MaterialTheme.colorScheme.primary
-//                                )
-//                            } else {
-//                                GeneralText(
-//                                    title = stringResource(screen.resourceId),
-//                                    align = TextAlign.Center,
-//                                    textColor = MaterialTheme.colorScheme.secondary
-//                                )
-//                            }
-//                        },
-//                        selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
-//                        onClick = {
-//                            screenTitleId = screen.resourceId
-//                            navController.navigate(screen.route) {
-//                                popUpTo(navController.graph.findStartDestination().id) {
-//                                    saveState = true
-//                                }
-//                                launchSingleTop = true
-//                                restoreState = true
-//                            }
-//                        },
-//                        colors = NavigationBarItemDefaults
-//                            .colors(
-//                                indicatorColor = MaterialTheme.colorScheme.background)
-//                    )
-//                }
-//            }
-        }
+        bottomBar = { }
     )
     { innerPadding ->
 
@@ -108,7 +44,7 @@ fun Navigation(){
             }
 
             composable(Screen.GameDetails.route) { backStackEntry ->
-//                val gameJson = backStackEntry.arguments?.getString("gameJson") ?: ""
+                //to decode object
                 val gameJson = URLDecoder.decode(backStackEntry.arguments?.getString("gameJson") ?: "", UTF_8.toString())
                 val game = Json.decodeFromString<GamesItem>(gameJson)
 
@@ -122,7 +58,6 @@ fun Navigation(){
                    game = game
                 )
             }
-
         }
     }
 }
