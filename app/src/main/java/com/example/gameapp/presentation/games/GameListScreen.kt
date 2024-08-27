@@ -59,7 +59,8 @@ fun GameListScreen(
                     GeneralText(
                         modifier = Modifier
                             .padding(25.dp),
-                        title = stringResource(id = R.string.empty_game_list))
+                        title = stringResource(id = R.string.empty_game_list)
+                    )
 
                 } else {
                     LazyColumn(modifier = Modifier.fillMaxWidth()) {

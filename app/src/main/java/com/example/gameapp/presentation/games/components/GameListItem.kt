@@ -95,7 +95,7 @@ fun GameListItem(
                     modifier = Modifier
                         .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp),
-                    title = game.title,
+                    title = game.title.uppercase(),
                     textColor = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
