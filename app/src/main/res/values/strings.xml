@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">Game App</string>
+    <string name="ok">OK</string>
+
     <!--    navigation -->
     <string name="nav_game">Games</string>
     <string name="nav_game_details">Game Details</string>
+
+    <!--    game-->
+    <string name="empty_game_list">No games available</string>
+
 
     <!--    game details-->
     <string name="published_by">Published by: %1$s</string>

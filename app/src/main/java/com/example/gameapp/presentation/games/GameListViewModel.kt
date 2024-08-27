@@ -15,11 +15,19 @@ class GameListViewModel @Inject constructor(
     private val getGamesUseCase: GetGamesUseCase
 ) : ViewModel() {
 
-    val _state = mutableStateOf(GameListState())
+    private val _state = mutableStateOf(GameListState())
     val state: State<GameListState> = _state
 
     init {
         getGames()
+    }
+
+    fun onEvent(events: GameListEvents) {
+        when (events) {
+            is GameListEvents.ResetError -> {
+                _state.value = state.value.copy(isShowError = false, errorMessage = null)
+            }
+        }
     }
 
     fun getGames() {
@@ -32,7 +40,7 @@ class GameListViewModel @Inject constructor(
 
                     is Resource.Error<*> -> {
                         _state.value = GameListState(
-                            error = result.message ?: "An unexpected error occured"
+                            errorMessage = result.message ?: "An unexpected error occured"
                         )
                     }
 

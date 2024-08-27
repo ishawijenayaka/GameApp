@@ -17,9 +17,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -31,14 +28,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.gameapp.R
 import com.example.gameapp.core.commanComponents.GeneralText
-import com.example.gameapp.core.commanComponents.MainTitle
-import com.example.gameapp.core.commanComponents.RoundedCornerButton
 import com.example.gameapp.core.commanComponents.SectionTitle
 import com.example.gameapp.core.commanComponents.SubText
 import com.example.gameapp.data.remote.dto.GamesItem
+import com.example.gameapp.presentation.gameDetails.GameDetailEvent
+import com.example.gameapp.presentation.gameDetails.GameDetailViewModel
 
 @Composable
-fun DescriptionSection(gamesItem: GamesItem) {
+fun DescriptionSection(gamesItem: GamesItem, viewModel: GameDetailViewModel) {
 
     val loaded = remember { mutableStateOf(false) }
     val context = LocalContext.current
@@ -141,8 +138,7 @@ fun DescriptionSection(gamesItem: GamesItem) {
                 modifier = Modifier
                     .padding(top = 5.dp, bottom = 5.dp)
                     .clickable {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(gamesItem.gameUrl))
-                        openUrlLauncher.launch(intent)
+                        viewModel.onEvent(GameDetailEvent.OpenUrl(gamesItem.gameUrl,context))
                     },
                 title = context.getString(R.string.game_url,gamesItem.gameUrl),
                 align = TextAlign.Start,

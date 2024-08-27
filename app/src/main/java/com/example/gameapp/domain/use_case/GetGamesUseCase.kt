@@ -20,7 +20,7 @@ class GetGamesUseCase @Inject constructor(
         } catch(e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occured"))
         } catch(e: IOException) {
-            emit(Resource.Error("Couldn't reach server. Check your internet connection."))
+            emit(Resource.Error(e.localizedMessage ?:"Couldn't reach server. Check your internet connection."))
         }
     }
 }

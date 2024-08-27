@@ -10,7 +10,7 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.gameapp.MainActivity
-import com.example.gameapp.core.navigation.Navigation
+import com.example.gameapp.presentation.navigation.Navigation
 import com.example.gameapp.data.remote.dto.GamesItem
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals

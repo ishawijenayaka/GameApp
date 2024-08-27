@@ -30,6 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -43,6 +44,7 @@ import java.net.URLDecoder
 fun GameDetailsScreen(
     topAppBar:@Composable ()->Unit,
     game: GamesItem,
+    viewModel: GameDetailViewModel = hiltViewModel()
 )
 {
     Scaffold(
@@ -155,7 +157,7 @@ fun GameDetailsScreen(
                     )
                 }
 
-                DescriptionSection(gamesItem = game)
+                DescriptionSection(gamesItem = game, viewModel = viewModel )
 
             }
         }

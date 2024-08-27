@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.gameapp.core.navigation.Navigation
+import com.example.gameapp.presentation.navigation.Navigation
 import com.example.gameapp.ui.theme.GameAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
