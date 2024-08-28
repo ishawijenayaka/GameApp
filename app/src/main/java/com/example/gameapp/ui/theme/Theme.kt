@@ -1,7 +1,6 @@
 package com.example.gameapp.ui.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -21,6 +20,7 @@ private val DarkColorScheme = darkColorScheme(
     secondary = Color.White,
     tertiary = PurpleGrey40,
     background = Color.Black,
+    onPrimary = LightBlue
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -28,7 +28,7 @@ private val LightColorScheme = lightColorScheme(
     secondary = Color.Black,
     tertiary = Purple80,
     background = Color.White,
-
+    onPrimary = DarkBlue,
     /* Other default colors to override
 
     surface = Color(0xFFFFFBFE),

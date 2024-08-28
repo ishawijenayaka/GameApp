@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -147,11 +148,13 @@ fun DescriptionSection(gamesItem: GamesItem, viewModel: GameDetailViewModel) {
                 modifier = Modifier
                     .padding(bottom = 5.dp)
                     .clickable {
-                        viewModel.onEvent(GameDetailEvent.OpenUrl(gamesItem.gameUrl, context))
+                        viewModel.onEvent(
+                            GameDetailEvent.OpenUrl(gamesItem.gameUrl, context)
+                        )
                     },
                 title = gamesItem.gameUrl ,
                 align = TextAlign.Start,
-                textColor = Color.Blue,
+                textColor = MaterialTheme.colorScheme.onPrimary,
                 maxLines = 5
             )
 
@@ -168,15 +171,12 @@ fun DescriptionSection(gamesItem: GamesItem, viewModel: GameDetailViewModel) {
                     .padding(bottom = 5.dp)
                     .clickable {
                         viewModel.onEvent(
-                            GameDetailEvent.OpenUrl(
-                                gamesItem.gameProfileUrl,
-                                context
-                            )
+                            GameDetailEvent.OpenUrl(gamesItem.gameProfileUrl, context)
                         )
                     },
                 title = gamesItem.gameProfileUrl ,
                 align = TextAlign.Start,
-                textColor = Color.Blue,
+                textColor = MaterialTheme.colorScheme.onPrimary,
                 maxLines = 5
             )
 

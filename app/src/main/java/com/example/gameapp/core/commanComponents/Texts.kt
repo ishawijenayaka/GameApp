@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -71,7 +72,8 @@ fun SubText(
         text = title,
         fontSize = 12.sp,
         fontWeight = FontWeight.Normal,
-        color = MaterialTheme.colorScheme.tertiary,
+        fontStyle = FontStyle.Italic,
+        color = MaterialTheme.colorScheme.primary,
         textAlign = align,
         maxLines = maxLines,
         lineHeight = 12.sp,
